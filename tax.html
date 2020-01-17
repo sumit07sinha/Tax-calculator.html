@@ -1,110 +1,118 @@
- <html>
-    <head>
-        <title>
-            Billing desk
-        </title>
-    </head>
-    <style>
-            table{
+<html>
+
+<head>
+    <title>
+        Billing desk
+    </title>
+</head>
+<style>
+    table {
         border-style: solid;
         border-color: black;
         border-width: 5px;
         border-radius: 5px;
         background-color: white;
-        }
-        #subBtn{
-        border-style: solid;
-        border-color: black;
-        border-width: 2px;
-        border-radius: 5px;
-        }
-        #taxBtn{
-        border-style: solid;
-        border-color: black;
-        border-width: 2px;
-        border-radius: 5px;
-        }
-        #gtotalBtn{
-        border-style: solid;
-        border-color: black;
-        border-width: 2px;
-        border-radius: 5px;
-        }
-        #main{
-             margin-left: 35%;
-             margin-top: 5%;
-        }
+    }
 
+    #subBtn {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 5px;
+    }
+
+    #taxBtn {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 5px;
+    }
+
+    #gtotalBtn {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 5px;
+    }
+
+    #main {
+        margin-left: 35%;
+        margin-top: 5%;
+    }
 </style>
-    <body>
-        <div id="main" >
-            <div class ="form">
-                    <h2> Billing Form</h5>
-                <form name="orderform" id="orderform">
-                    <table>
-                         <tr>
-                            <th>
-                                    <label>Select the Product: </label>
-                            </th>
-                            <th scope="row">
+
+<body>
+    <div id="main">
+        <div class="form">
+            <h2> Billing Form</h2>
+            <form name="orderform" id="orderform">
+                <table>
+                    <tr>
+                        <th>
+                            <label>Select the Product: </label>
+                        </th>
+                        <th scope="row">
                             <div align="left">
-                                <select id="select" onchange="mySelect()" name="Products">
-                                     <option  value="">Select product</option> 
-                                    <option  value="1000">Product A</option>
-                                    <option  value="1500">Product B</option>
-                                    <option  value="2000">Product C</option>
+                                <select id="select" name="Products">
+                                    <option>Select product</option>
+                                    <option value="1000">Product A</option>
+                                    <option value="1500">Product B</option>
+                                    <option value="2000">Product C</option>
                                 </select>
                             </div>
-                            </th>
-                            </tr>
-                               <tr>
-                                <th>
-                                    <div id="Cost"></div>
-                                </th>
-                            </tr>
-                              <tr>
-                                <th>
-                                    <label>Total Amount:<input type="text" id="myNumber"></label><br>
-                                    <div id="Cost1"></div>
-                                    <button type="submit" onclick="result()">Submit</button> 
-                                </th>
-                            </tr>
-                     </table>
-                </form>      
-            </div>
-        </div> 
-    </body>
-    <script>
-        function mySelect(){
-            var x =  document.getElementById("select").value;
-            document.getElementById('Cost').innerHTML=`Cost of the selected product is ${x}`;
-        }
-         function result(){
-             var x =  document.getElementById("select").value;  
-                if(x == 1000){
-               let y = x*0.95;
-               let z= y*0.18;
-               let a= y+z;
-              alert(a);  
-               document.getElementById("myNumber").innerHTML = a;
-                }
-                else if(x == 1500){
-                    let y = x*0.95;
-                    let z= y*0.18;
-                    let  a= y+z;
-                
-                document.getElementById("myNumber").innerHTML = a;
-                }
-                else{
-                   
-                    let   y = x*0.95;
-                    let  z= y*0.18;
-                    let a= y+z;
-                document.getElementById("myNumber").innerHTML = a;
-                }
-            }
-        
-      
-    </script>
-</html>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div id="Cost"></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p id="myNumber"></p>
 
+                            <button type="submit" id="submit">Submit</button>
+                        </th>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("select").addEventListener("change", mySelect);
+    document.getElementById("submit").addEventListener("click", result);
+    function mySelect() {
+        var x = document.getElementById("select").value;
+        document.getElementById('Cost').innerHTML = `Cost of the selected product is ${x}`;
+    }
+    function result(event) {
+        var x = document.getElementById("select").value;
+        if (x == 1000) {
+            let y = (x * 0.95);
+            let z = (y * 0.18);
+            let a = (y + z);
+            alert(a);
+            document.getElementById("myNumber").innerHTML = `Total value is ${a}`;
+        }
+        else if (x == 1500) {
+            let y = (x * 0.95);
+            let z = (y * 0.18);
+            let a = (y + z);
+            alert(a);
+            document.getElementById("myNumber").innerHTML = `Total value is ${a}`;
+        }
+        else {
+            let y = (x * 0.95);
+            let z = (y * 0.18);
+            let a = (y + z);
+            alert(a);
+            document.getElementById("myNumber").innerHTML = `Total value is ${a}`;
+        }
+        event.preventDefault();
+    };
+
+
+</script>
+
+</html>
